@@ -12,6 +12,8 @@
 		E909C3D8206268670082B264 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E909C3D6206268670082B264 /* Main.storyboard */; };
 		E909C3DA206268670082B264 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E909C3D9206268670082B264 /* Assets.xcassets */; };
 		E909C3DD206268670082B264 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E909C3DB206268670082B264 /* LaunchScreen.storyboard */; };
+		E909C3E720626A760082B264 /* SchemeLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = E909C3E620626A760082B264 /* SchemeLibrary.swift */; };
+		E9ED92B22062E1A300A570E4 /* SchemeGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ED92B12062E1A300A570E4 /* SchemeGame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		E909C3D9206268670082B264 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E909C3DC206268670082B264 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E909C3DE206268670082B264 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E909C3E620626A760082B264 /* SchemeLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemeLibrary.swift; sourceTree = "<group>"; };
+		E9ED92B12062E1A300A570E4 /* SchemeGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemeGame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +58,24 @@
 		E909C3D1206268670082B264 /* PHTLSScheme */ = {
 			isa = PBXGroup;
 			children = (
-				E909C3D2206268670082B264 /* AppDelegate.swift */,
+				E909C3E52062691D0082B264 /* Supporting Files */,
 				E909C3D4206268670082B264 /* ViewController.swift */,
 				E909C3D6206268670082B264 /* Main.storyboard */,
-				E909C3D9206268670082B264 /* Assets.xcassets */,
-				E909C3DB206268670082B264 /* LaunchScreen.storyboard */,
+				E909C3E620626A760082B264 /* SchemeLibrary.swift */,
 				E909C3DE206268670082B264 /* Info.plist */,
+				E9ED92B12062E1A300A570E4 /* SchemeGame.swift */,
 			);
 			path = PHTLSScheme;
+			sourceTree = "<group>";
+		};
+		E909C3E52062691D0082B264 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E909C3D2206268670082B264 /* AppDelegate.swift */,
+				E909C3D9206268670082B264 /* Assets.xcassets */,
+				E909C3DB206268670082B264 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +151,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E909C3D5206268670082B264 /* ViewController.swift in Sources */,
+				E909C3E720626A760082B264 /* SchemeLibrary.swift in Sources */,
+				E9ED92B22062E1A300A570E4 /* SchemeGame.swift in Sources */,
 				E909C3D3206268670082B264 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,6 +291,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TFXDQ8D7R8;
 				INFOPLIST_FILE = PHTLSScheme/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tilRoy.PHTLSScheme;
@@ -289,6 +306,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TFXDQ8D7R8;
 				INFOPLIST_FILE = PHTLSScheme/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tilRoy.PHTLSScheme;
