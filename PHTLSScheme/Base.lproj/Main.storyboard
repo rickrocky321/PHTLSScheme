@@ -85,6 +85,7 @@
                             <constraint firstItem="2Bp-xl-X4N" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="548-sX-q7D"/>
                             <constraint firstItem="2Bp-xl-X4N" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="5Wr-su-2J9"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2Bp-xl-X4N" secondAttribute="trailing" constant="20" id="dll-Qw-2HV"/>
+                            <constraint firstItem="ZuO-Rs-s5p" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" symbolic="YES" id="jsx-lx-rgF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ZuO-Rs-s5p" secondAttribute="bottom" constant="20" id="pq8-z6-As9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
