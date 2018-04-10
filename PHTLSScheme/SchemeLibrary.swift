@@ -12,7 +12,7 @@ struct SchemeLibrary{
     
     // The PHTLS Scheme seperated into different platous and in each one the steps are arrenged.
     private static let library = [
-        ["S", "A", "B", "C", "D", "E"],
+        ["S-Saftey", "A-Airway", "B-Breathing", "C-Circulation", "D-Disability", "E-Enviornment"],
         
         ["ביטחון המטפל והמטופל", "התרשמות מזירת האירוע ומנגנון הפציעה", "עצירת דימום פורץ", "דיווח ראשוני",
          "בדיקת הכרה ראשונית", "הסרת קסדה", "התרשמות מדרכי האוויר של הנפגע",
@@ -42,7 +42,7 @@ struct SchemeLibrary{
         (0, 1), (1, 2), (2, 1), (1, 2) // E
         ]
     static var currentStepString: String { return library[currentPlatous][currentStepInLibrary[currentPlatous]] }
-    private(set) static var lastStepString = ""
+    private(set) static var lastStepString = ["", "", ""]
     private(set) static var currentStepInLibrary = [0, 0, 0]
     private static var currentStep = 0  // The current step in the specific sequence
     static var currentPlatous: Int { return sequence[indexInSequence].0 }
@@ -51,7 +51,7 @@ struct SchemeLibrary{
     private(set) static var isFinished = false
     
     static func nextStep() {
-        lastStepString = currentStepString
+        lastStepString[currentPlatous] = currentStepString
         currentStep += 1
         // Either way you should increase the current step in the library at the right platous
         currentStepInLibrary[currentPlatous] += 1

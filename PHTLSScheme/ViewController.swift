@@ -25,22 +25,42 @@ class ViewController: UIViewController {
     
     @IBAction func optionClicked(_ sender: UIButton) {
         if SchemeLibrary.currentCorrectOption == optionButtons.index(of: sender) {
-            SchemeLibrary.nextStep()
-            if SchemeLibrary.isFinished {
-                performSegue(withIdentifier: "showSuccessViewController", sender: self)
-            } else {
-                updateViewFromModel()
-            }
+            nextStepInSchemeLibrary()
         }
-
+    }
+    
+    @IBAction func nextStepButtonClicked(_ sender: UIButton) {
+        nextStepInSchemeLibrary()
+    }
+    
+    func nextStepInSchemeLibrary() {
+        SchemeLibrary.nextStep()
+        if SchemeLibrary.isFinished {
+            performSegue(withIdentifier: "showSuccessViewController", sender: self)
+        } else {
+            updateViewFromModel()
+        }
     }
     
     func updateViewFromModel() {
         for index in optionButtons.indices {
             let button = optionButtons[index]
             // Set title to button from library by using game option number
-            button.setAttributedTitle(NSAttributedString(string: SchemeLibrary.currentOptions[index]), for: UIControlState.normal)
+            button.titleLabel?.textAlignment = NSTextAlignment.center
+            button.setTitle(SchemeLibrary.currentOptions[index], for: UIControlState.normal)
         }
-        lastStepLabel.text = "השלב הקודם: \(SchemeLibrary.lastStepString)"
+        lastStepLabel.text = "השלב הקודם: \(SchemeLibrary.lastStepString[SchemeLibrary.currentPlatous])"
+        changeViewByPlatous(platous: SchemeLibrary.currentPlatous)
+    }
+    
+    func changeViewByPlatous(platous: Int) {
+        switch platous {
+        case 0:
+            self.view.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
+        case 1:
+            self.view.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
+        default:
+            self.view.backgroundColor = #colorLiteral(red: 0.6309476495, green: 0.808812499, blue: 0.8660791516, alpha: 1)
+        }
     }
 }
