@@ -11,7 +11,7 @@ import Foundation
 struct SchemeLibrary{
     
     // The PHTLS Scheme seperated into different platous and in each one the steps are arrenged.
-    private static let library = [
+    private let library = [
         ["S-Saftey", "A-Airway", "B-Breathing", "C-Circulation", "D-Disability", "E-Enviornment"],
         
         ["ביטחון המטפל והמטופל", "התרשמות מזירת האירוע ומנגנון הפציעה", "עצירת דימום פורץ", "דיווח ראשוני",
@@ -33,7 +33,7 @@ struct SchemeLibrary{
          "סימטריה, גודל (צרים, רחבים) ותגובה לאור", "תנועות פשוטות בהתאם לפקודה קולית", "קיבוע לקרש גב במקרה הצורך"]
         ]
     // The sequence in which to read from the PHTLS Scheme library
-    private static let sequence: [(Int, Int)] = [
+    private let sequence: [(Int, Int)] = [
         (0, 1), (1, 2), (2, 3), (1, 2), // S
         (0, 1), (1, 3), (2, 4), (1, 2), (2, 1), // A
         (0, 1), (1, 1), (2, 2), (1, 2), (2, 1), // B
@@ -41,16 +41,16 @@ struct SchemeLibrary{
         (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (1, 1), (2, 1), // D
         (0, 1), (1, 2), (2, 1), (1, 2) // E
         ]
-    static var currentStepString: String { return library[currentPlatous][currentStepInLibrary[currentPlatous]] }
-    private(set) static var lastStepString = ["", "", ""]
-    private(set) static var currentStepInLibrary = [0, 0, 0]
-    private static var currentStep = 0  // The current step in the specific sequence
-    static var currentPlatous: Int { return sequence[indexInSequence].0 }
-    static var numOfStepsInCurrentSequence: Int { return sequence[indexInSequence].1 }
-    private static var indexInSequence = 0
-    private(set) static var isFinished = false
+    var currentStepString: String { return library[currentPlatous][currentStepInLibrary[currentPlatous]] }
+    private(set) var lastStepString = ["", "", ""]
+    private(set) var currentStepInLibrary = [0, 0, 0]
+    private var currentStep = 0  // The current step in the specific sequence
+    var currentPlatous: Int { return sequence[indexInSequence].0 }
+    var numOfStepsInCurrentSequence: Int { return sequence[indexInSequence].1 }
+    private var indexInSequence = 0
+    private(set) var isFinished = false
     
-    static func nextStep() {
+    mutating func nextStep() {
         lastStepString[currentPlatous] = currentStepString
         currentStep += 1
         // Either way you should increase the current step in the library at the right platous
@@ -66,12 +66,12 @@ struct SchemeLibrary{
         if !isFinished { generateOptions() }
     }
     
-    static var numOfOptions = 4 // Default is 4
-    private(set) static var currentCorrectOption = numOfOptions.arc4random
-    private(set) static var currentOptions = [String]()
-    private static var randomStepInCurrentPlatous: Int { return library[currentPlatous].count.arc4random }
+    var numOfOptions = 4 // Default is 4
+    lazy private(set) var currentCorrectOption = numOfOptions.arc4random
+    private(set) var currentOptions = [String]()
+    private var randomStepInCurrentPlatous: Int { return library[currentPlatous].count.arc4random }
     
-    static func generateOptions() {
+    mutating func generateOptions() {
         currentOptions = Array(repeating: currentStepString, count: numOfOptions)
         currentCorrectOption = numOfOptions.arc4random
         for index in 0..<numOfOptions {

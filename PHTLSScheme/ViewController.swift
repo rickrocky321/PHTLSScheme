@@ -13,18 +13,19 @@ class ViewController: UIViewController {
     // View option buttons array
     @IBOutlet var optionButtons: [UIButton]!
     @IBOutlet weak var lastStepLabel: UILabel!
+    var scheme = SchemeLibrary()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //todo: add function that accepts a json/xml and outputs the correct format to SchemeLibrary
         
         // Options arn't genretaed when the SchemeLibrary is first accesed
-        SchemeLibrary.generateOptions()
+        scheme.generateOptions()
         updateViewFromModel()
     }
     
     @IBAction func optionClicked(_ sender: UIButton) {
-        if SchemeLibrary.currentCorrectOption == optionButtons.index(of: sender) {
+        if scheme.currentCorrectOption == optionButtons.index(of: sender) {
             nextStepInSchemeLibrary()
         }
     }
@@ -34,8 +35,8 @@ class ViewController: UIViewController {
     }
     
     func nextStepInSchemeLibrary() {
-        SchemeLibrary.nextStep()
-        if SchemeLibrary.isFinished {
+        scheme.nextStep()
+        if scheme.isFinished {
             performSegue(withIdentifier: "showSuccessViewController", sender: self)
         } else {
             updateViewFromModel()
@@ -47,10 +48,10 @@ class ViewController: UIViewController {
             let button = optionButtons[index]
             // Set title to button from library by using game option number
             button.titleLabel?.textAlignment = NSTextAlignment.center
-            button.setTitle(SchemeLibrary.currentOptions[index], for: UIControlState.normal)
+            button.setTitle(scheme.currentOptions[index], for: UIControlState.normal)
         }
-        lastStepLabel.text = "השלב הקודם: \(SchemeLibrary.lastStepString[SchemeLibrary.currentPlatous])"
-        changeViewByPlatous(platous: SchemeLibrary.currentPlatous)
+        lastStepLabel.text = "השלב הקודם: \(scheme.lastStepString[scheme.currentPlatous])"
+        changeViewByPlatous(platous: scheme.currentPlatous)
     }
     
     func changeViewByPlatous(platous: Int) {
