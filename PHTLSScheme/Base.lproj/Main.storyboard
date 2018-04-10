@@ -19,37 +19,46 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="2Bp-xl-X4N">
-                                <rect key="frame" x="20" y="40" width="335" height="180"/>
+                                <rect key="frame" x="20" y="40" width="335" height="231.5"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cO8-3r-mQt">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="cO8-3r-mQt">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="33"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <state key="normal" title="OptionButton"/>
                                         <connections>
                                             <action selector="optionClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8MG-OF-BZA"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6B4-rY-RoG">
-                                        <rect key="frame" x="0.0" y="50" width="335" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="6B4-rY-RoG">
+                                        <rect key="frame" x="0.0" y="53" width="335" height="33"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <state key="normal" title="OptionButton"/>
                                         <connections>
                                             <action selector="optionClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="i7w-qy-kJL"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sak-Io-G4s">
-                                        <rect key="frame" x="0.0" y="100" width="335" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="sak-Io-G4s">
+                                        <rect key="frame" x="0.0" y="106" width="335" height="33"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <state key="normal" title="OptionButton"/>
                                         <connections>
                                             <action selector="optionClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RdI-E7-eMW"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJP-ZT-aZ8">
-                                        <rect key="frame" x="0.0" y="150" width="335" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="gJP-ZT-aZ8">
+                                        <rect key="frame" x="0.0" y="159" width="335" height="33"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <state key="normal" title="OptionButton"/>
                                         <connections>
                                             <action selector="optionClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a13-XA-ucb"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Step:" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OMr-DY-JbD">
+                                        <rect key="frame" x="0.0" y="212" width="335" height="19.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -62,6 +71,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="lastStepLabel" destination="OMr-DY-JbD" id="Ysb-SS-hm1"/>
                         <outletCollection property="optionButtons" destination="cO8-3r-mQt" collectionClass="NSMutableArray" id="mZf-iC-A4j"/>
                         <outletCollection property="optionButtons" destination="6B4-rY-RoG" collectionClass="NSMutableArray" id="vEh-5h-odY"/>
                         <outletCollection property="optionButtons" destination="sak-Io-G4s" collectionClass="NSMutableArray" id="QVv-IG-hBH"/>
@@ -84,10 +94,10 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dickbutt" translatesAutoresizingMaskIntoConstraints="NO" id="mVt-e9-dti">
                                 <rect key="frame" x="89" y="206" width="197" height="255"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fuck A You" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1oj-I2-k0W">
-                                <rect key="frame" x="20" y="40" width="335" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="0.47893798830933221" blue="0.43123901037789047" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fuck A You" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1oj-I2-k0W">
+                                <rect key="frame" x="20" y="40" width="335" height="31.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>

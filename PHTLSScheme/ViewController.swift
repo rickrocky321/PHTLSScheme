@@ -12,7 +12,8 @@ class ViewController: UIViewController {
     
     // View option buttons array
     @IBOutlet var optionButtons: [UIButton]!
-
+    @IBOutlet weak var lastStepLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //todo: add function that accepts a json/xml and outputs the correct format to SchemeLibrary
@@ -38,7 +39,8 @@ class ViewController: UIViewController {
         for index in optionButtons.indices {
             let button = optionButtons[index]
             // Set title to button from library by using game option number
-            button.setTitle(SchemeLibrary.currentOptions[index], for: UIControlState.normal)
+            button.setAttributedTitle(NSAttributedString(string: SchemeLibrary.currentOptions[index]), for: UIControlState.normal)
         }
+        lastStepLabel.text = "השלב הקודם: \(SchemeLibrary.lastStepString)"
     }
 }

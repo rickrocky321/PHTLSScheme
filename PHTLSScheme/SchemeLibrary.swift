@@ -42,7 +42,7 @@ struct SchemeLibrary{
         (0, 1), (1, 2), (2, 1), (1, 2) // E
         ]
     static var currentStepString: String { return library[currentPlatous][currentStepInLibrary[currentPlatous]] }
-    
+    private(set) static var lastStepString = ""
     private(set) static var currentStepInLibrary = [0, 0, 0]
     private static var currentStep = 0  // The current step in the specific sequence
     static var currentPlatous: Int { return sequence[indexInSequence].0 }
@@ -51,6 +51,7 @@ struct SchemeLibrary{
     private(set) static var isFinished = false
     
     static func nextStep() {
+        lastStepString = currentStepString
         currentStep += 1
         // Either way you should increase the current step in the library at the right platous
         currentStepInLibrary[currentPlatous] += 1
@@ -69,6 +70,7 @@ struct SchemeLibrary{
     private(set) static var currentCorrectOption = numOfOptions.arc4random
     private(set) static var currentOptions = [String]()
     private static var randomStepInCurrentPlatous: Int { return library[currentPlatous].count.arc4random }
+    
     static func generateOptions() {
         currentOptions = Array(repeating: currentStepString, count: numOfOptions)
         currentCorrectOption = numOfOptions.arc4random
