@@ -7,16 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		418D774E2463C7C8F1BBD0B9 /* Pods_PHTLSScheme.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5323F83F3DE9F411382453 /* Pods_PHTLSScheme.framework */; };
 		E909C3D3206268670082B264 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E909C3D2206268670082B264 /* AppDelegate.swift */; };
 		E909C3D5206268670082B264 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E909C3D4206268670082B264 /* ViewController.swift */; };
 		E909C3D8206268670082B264 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E909C3D6206268670082B264 /* Main.storyboard */; };
 		E909C3DA206268670082B264 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E909C3D9206268670082B264 /* Assets.xcassets */; };
 		E909C3DD206268670082B264 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E909C3DB206268670082B264 /* LaunchScreen.storyboard */; };
 		E909C3E720626A760082B264 /* SchemeLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = E909C3E620626A760082B264 /* SchemeLibrary.swift */; };
-		E9ED92B22062E1A300A570E4 /* SchemeGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ED92B12062E1A300A570E4 /* SchemeGame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		27A2202C3A7D6687775FF673 /* Pods-PHTLSScheme.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PHTLSScheme.release.xcconfig"; path = "Pods/Target Support Files/Pods-PHTLSScheme/Pods-PHTLSScheme.release.xcconfig"; sourceTree = "<group>"; };
+		6D5323F83F3DE9F411382453 /* Pods_PHTLSScheme.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PHTLSScheme.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7CE28D2617438A36A8AD650 /* Pods-PHTLSScheme.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PHTLSScheme.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PHTLSScheme/Pods-PHTLSScheme.debug.xcconfig"; sourceTree = "<group>"; };
 		E909C3CF206268670082B264 /* PHTLSScheme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PHTLSScheme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E909C3D2206268670082B264 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E909C3D4206268670082B264 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -25,7 +28,6 @@
 		E909C3DC206268670082B264 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E909C3DE206268670082B264 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E909C3E620626A760082B264 /* SchemeLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemeLibrary.swift; sourceTree = "<group>"; };
-		E9ED92B12062E1A300A570E4 /* SchemeGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemeGame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +35,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				418D774E2463C7C8F1BBD0B9 /* Pods_PHTLSScheme.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ADA6A04398D3DE0012A90138 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A7CE28D2617438A36A8AD650 /* Pods-PHTLSScheme.debug.xcconfig */,
+				27A2202C3A7D6687775FF673 /* Pods-PHTLSScheme.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		E909C3C6206268670082B264 = {
 			isa = PBXGroup;
 			children = (
 				E909C3D1206268670082B264 /* PHTLSScheme */,
 				E909C3D0206268670082B264 /* Products */,
+				ADA6A04398D3DE0012A90138 /* Pods */,
+				FA50D42A62D0A7B0D090C0B3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,10 +74,10 @@
 			children = (
 				E909C3E52062691D0082B264 /* Supporting Files */,
 				E909C3D4206268670082B264 /* ViewController.swift */,
-				E909C3D6206268670082B264 /* Main.storyboard */,
 				E909C3E620626A760082B264 /* SchemeLibrary.swift */,
+				E909C3D6206268670082B264 /* Main.storyboard */,
+				E909C3D9206268670082B264 /* Assets.xcassets */,
 				E909C3DE206268670082B264 /* Info.plist */,
-				E9ED92B12062E1A300A570E4 /* SchemeGame.swift */,
 			);
 			path = PHTLSScheme;
 			sourceTree = "<group>";
@@ -72,10 +86,17 @@
 			isa = PBXGroup;
 			children = (
 				E909C3D2206268670082B264 /* AppDelegate.swift */,
-				E909C3D9206268670082B264 /* Assets.xcassets */,
 				E909C3DB206268670082B264 /* LaunchScreen.storyboard */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FA50D42A62D0A7B0D090C0B3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6D5323F83F3DE9F411382453 /* Pods_PHTLSScheme.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -85,9 +106,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E909C3E1206268670082B264 /* Build configuration list for PBXNativeTarget "PHTLSScheme" */;
 			buildPhases = (
+				8872EDEA99FCAD76AD259CD0 /* [CP] Check Pods Manifest.lock */,
 				E909C3CB206268670082B264 /* Sources */,
 				E909C3CC206268670082B264 /* Frameworks */,
 				E909C3CD206268670082B264 /* Resources */,
+				8DC4BC4546B9593C37F5146C /* [CP] Embed Pods Frameworks */,
+				DBC77817F008C2103EE80552 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -145,6 +169,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8872EDEA99FCAD76AD259CD0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PHTLSScheme-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8DC4BC4546B9593C37F5146C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-PHTLSScheme/Pods-PHTLSScheme-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PHTLSScheme/Pods-PHTLSScheme-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DBC77817F008C2103EE80552 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PHTLSScheme/Pods-PHTLSScheme-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E909C3CB206268670082B264 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -152,7 +230,6 @@
 			files = (
 				E909C3D5206268670082B264 /* ViewController.swift in Sources */,
 				E909C3E720626A760082B264 /* SchemeLibrary.swift in Sources */,
-				E9ED92B22062E1A300A570E4 /* SchemeGame.swift in Sources */,
 				E909C3D3206268670082B264 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,6 +365,7 @@
 		};
 		E909C3E2206268670082B264 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A7CE28D2617438A36A8AD650 /* Pods-PHTLSScheme.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -303,6 +381,7 @@
 		};
 		E909C3E3206268670082B264 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27A2202C3A7D6687775FF673 /* Pods-PHTLSScheme.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -8,18 +8,18 @@
 
 import Foundation
 
-class SchemeGame {
+class SchemeFlow {
     let numOfOptions: Int
     let numOfSteps: Int
     
     var currentStep = 0 {
         didSet {
-            currentCorrect = Int(arc4random_uniform(UInt32(numOfOptions)))
+            currentCorrect = numOfOptions.arc4random
         }
     }
     
     var currentOptions = [Int]()
-    lazy var currentCorrect = Int(arc4random_uniform(UInt32(numOfOptions)))
+    lazy var currentCorrect = numOfOptions.arc4random
     
     var isFinished: Bool {
         get {
@@ -29,6 +29,7 @@ class SchemeGame {
     
     // Initialize with amount of options in view
     init (numOfSteps: Int, numOfOptions: Int) {
+        assert(numOfSteps >= numOfOptions, "numOfSteps has to be at least as long as the numOfOptions")
         self.numOfOptions = numOfOptions
         self.numOfSteps = numOfSteps
         // Initalize currectOptions content
@@ -41,12 +42,12 @@ class SchemeGame {
         for index in 0..<numOfOptions {
             if index != currentCorrect {
                 // TODO add while loop so that it won't add multiplicities, and the currentCorrect twice
-                var randomPosition = Int(arc4random_uniform(UInt32(numOfSteps)))
+                var randomPosition = numOfSteps.arc4random
                 while currentOptions.contains(randomPosition) || randomPosition == currentStep {
-                    randomPosition = Int(arc4random_uniform(UInt32(numOfSteps)))
+                    randomPosition = numOfSteps.arc4random
                 }
                 currentOptions[index] = randomPosition
-                print(currentOptions)
+                //print(currentOptions)
             }
         }
     }
@@ -58,3 +59,16 @@ class SchemeGame {
     }
     
 }
+
+//extension Int {
+//    var arc4random: Int {
+//        if self > 0 {
+//            return Int(arc4random_uniform(UInt32(self)))
+//        } else if self < 0 {
+//            return -Int(arc4random_uniform(UInt32(-self)))
+//        } else {
+//            return 0
+//        }
+//    }
+//}
+
