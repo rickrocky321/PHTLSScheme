@@ -13,12 +13,11 @@ class ViewController: UIViewController {
     // View option buttons array
     @IBOutlet var optionButtons: [UIButton]!
     @IBOutlet weak var lastStepLabel: UILabel!
-    lazy var scheme = SchemeLibrary()
+    var scheme = SchemeLibrary()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //todo: add function that accepts a json/xml and outputs the correct format to SchemeLibrary
-        
         // Options arn't genretaed when the SchemeLibrary is first accesed
         scheme.generateOptions()
         updateViewFromModel()

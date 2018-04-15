@@ -17,13 +17,14 @@ class SchemeJsonParser {
         quary.observeSingleEvent(of: .value) { (snapshot) in
             if let value = snapshot.value as? [String:Any] {
                 // Parse the PHTLSScheme key from the firebase database
-                self.parser(from: value, inside: self.currentPlatous)
+                self.parser(from: value, inside: 0)
+                print(self.library)
+                print(self.sequence)
             }
         }
     }
     
     private func parser(from step: [String:Any], inside platous: Int) {
-        
         let stepTitle = (step["title"] ?? "No title found") as! String
         appendLibrary(with: stepTitle, at: platous-1)
         // Devide into individual [String:Any]
@@ -40,16 +41,24 @@ class SchemeJsonParser {
     }
     
     private(set) var library: [[String]] = [[]]
-    private(set) var sequence: [(Int, Int)] = [(0,0)]
+    private(set) var sequence: [(Int, Int)] = []
     private var currentPlatous = 0
+    private var amountOfStepsInPlatous = 0
     
     private func appendLibrary(with stepString: String, at platous: Int) {
-        print(stepString)
-        print(platous)
         if platous >= 0 {
-            if platous == currentPlatous {
-                
+            // Add an element in the library if the platous requires it
+            if platous >= library.count {
+                library.append([])
             }
+            library[platous].append(stepString)
+            
+            if platous != currentPlatous {
+                sequence.append((currentPlatous, amountOfStepsInPlatous))
+                amountOfStepsInPlatous = 0
+                currentPlatous = platous
+            }
+            amountOfStepsInPlatous += 1
         }
     }
 }

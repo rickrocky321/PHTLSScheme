@@ -8,10 +8,10 @@
 
 import Foundation
 
-struct SchemeLibrary{
+class SchemeLibrary{
     
     // The PHTLS Scheme seperated into different platous and in each one the steps are arrenged.
-    private let library = [
+    var library = [
         ["S-Saftey", "A-Airway", "B-Breathing", "C-Circulation", "D-Disability", "E-Enviornment"],
         
         ["ביטחון המטפל והמטופל", "התרשמות מזירת האירוע ומנגנון הפציעה", "עצירת דימום פורץ", "דיווח ראשוני",
@@ -33,7 +33,7 @@ struct SchemeLibrary{
          "סימטריה, גודל (צרים, רחבים) ותגובה לאור", "תנועות פשוטות בהתאם לפקודה קולית", "קיבוע לקרש גב במקרה הצורך"]
         ]
     // The sequence in which to read from the PHTLS Scheme library
-    private let sequence: [(Int, Int)] = [
+    var sequence: [(Int, Int)] = [
         (0, 1), (1, 2), (2, 3), (1, 2), // S
         (0, 1), (1, 3), (2, 4), (1, 2), (2, 1), // A
         (0, 1), (1, 1), (2, 2), (1, 2), (2, 1), // B
@@ -41,10 +41,6 @@ struct SchemeLibrary{
         (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (1, 1), (2, 1), // D
         (0, 1), (1, 2), (2, 1), (1, 2) // E
         ]
-    
-    init() {
-        let SchemeFormed = SchemeJsonParser()
-    }
     
     var currentStepString: String { return library[currentPlatous][currentStepInLibrary[currentPlatous]] }
     private(set) var lastStepString = ["", "", ""]
@@ -55,7 +51,7 @@ struct SchemeLibrary{
     private var indexInSequence = 0
     private(set) var isFinished = false
     
-    mutating func nextStep() {
+    func nextStep() {
         lastStepString[currentPlatous] = currentStepString
         currentStep += 1
         // Either way you should increase the current step in the library at the right platous
@@ -76,7 +72,7 @@ struct SchemeLibrary{
     private(set) var currentOptions = [String]()
     private var randomStepInCurrentPlatous: Int { return library[currentPlatous].count.arc4random }
     
-    mutating func generateOptions() {
+    func generateOptions() {
         currentOptions = Array(repeating: currentStepString, count: numOfOptions)
         currentCorrectOption = numOfOptions.arc4random
         for index in 0..<numOfOptions {
