@@ -42,6 +42,13 @@ class SchemeLibrary{
         (0, 1), (1, 2), (2, 1), (1, 2) // E
         ]
     
+    init() {
+        let _ = SchemeJsonParser { (library, sequence) in
+            self.library = library
+            self.sequence = sequence
+        }
+    }
+    
     var currentStepString: String { return library[currentPlatous][currentStepInLibrary[currentPlatous]] }
     private(set) var lastStepString = ["", "", ""]
     private(set) var currentStepInLibrary = [0, 0, 0]

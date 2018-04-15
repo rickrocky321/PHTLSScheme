@@ -10,7 +10,7 @@ import Foundation
 import FirebaseDatabase
 
 class SchemeJsonParser {
-    init() {
+    init(onCompletion: @escaping ((_ library: [[String]],_ sequence: [(Int, Int)])->Void)) {
         var databaseReference: DatabaseReference!
         databaseReference = Database.database().reference()
         let quary = databaseReference.child("PHTLSScheme")
@@ -20,6 +20,7 @@ class SchemeJsonParser {
                 self.parser(from: value, inside: 0)
                 print(self.library)
                 print(self.sequence)
+                onCompletion(self.library, self.sequence)
             }
         }
     }
@@ -62,4 +63,5 @@ class SchemeJsonParser {
         }
     }
 }
+
 

@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     // View option buttons array
     @IBOutlet var optionButtons: [UIButton]!
     @IBOutlet weak var lastStepLabel: UILabel!
-    var scheme = SchemeLibrary()
+    lazy var scheme = SchemeLibrary()
     
     override func viewDidLoad() {
         super.viewDidLoad()
