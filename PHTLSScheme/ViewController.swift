@@ -12,7 +12,8 @@ class ViewController: UIViewController {
     
     // View option buttons array
     @IBOutlet var optionButtons: [UIButton]!
-    @IBOutlet weak var lastStepLabel: UILabel!
+    //@IBOutlet weak var lastStepLabel: UILabel!
+    @IBOutlet weak var stepsLabel: UILabel!
     lazy var scheme = SchemeLibrary()
     
     override func viewDidLoad() {
@@ -49,7 +50,8 @@ class ViewController: UIViewController {
             button.titleLabel?.textAlignment = NSTextAlignment.center
             button.setTitle(scheme.currentOptions[index], for: UIControlState.normal)
         }
-        lastStepLabel.text = "השלב הקודם: \(scheme.lastStepString[scheme.currentPlatous])"
+//        lastStepLabel.text = "השלב הקודם: \(scheme.lastStepString[scheme.currentPlatous])"
+        stepsLabel.text = "\(stepsLabel.text!) \(scheme.lastStepString[scheme.currentPlatous])\n"
         changeViewByPlatous(platous: scheme.currentPlatous)
     }
     
