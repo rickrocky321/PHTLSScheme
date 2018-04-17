@@ -65,11 +65,11 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oim-xB-nQK">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oim-xB-nQK">
                                 <rect key="frame" x="0.0" y="220" width="375" height="414"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="343" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Z2-WN-OWv">
-                                        <rect key="frame" x="8" y="8" width="359" height="343"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Z2-WN-OWv">
+                                        <rect key="frame" x="8" y="8" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -83,7 +83,7 @@
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZuO-Rs-s5p">
-                                <rect key="frame" x="209" y="634" width="166" height="33"/>
+                                <rect key="frame" x="0.0" y="634" width="375" height="33"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <state key="normal" title="רמאות - עבור לשלב הבא">
                                     <color key="titleColor" red="0.25098040700000002" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -100,6 +100,7 @@
                             <constraint firstItem="ZuO-Rs-s5p" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="T0e-3F-Fc7"/>
                             <constraint firstItem="2Bp-xl-X4N" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="V9g-iA-yLk"/>
                             <constraint firstItem="oim-xB-nQK" firstAttribute="top" secondItem="2Bp-xl-X4N" secondAttribute="bottom" id="coc-nd-L9Y"/>
+                            <constraint firstItem="ZuO-Rs-s5p" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dbG-Vb-jYR"/>
                             <constraint firstItem="ZuO-Rs-s5p" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="fE5-oe-tU8"/>
                             <constraint firstItem="2Bp-xl-X4N" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="muo-hf-QaN"/>
                             <constraint firstItem="oim-xB-nQK" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="vri-JZ-SFc"/>
@@ -109,6 +110,7 @@
                     <navigationItem key="navigationItem" title="PHTLS Scheme Quiz" id="cWg-hx-loj"/>
                     <connections>
                         <outlet property="stepsLabel" destination="4Z2-WN-OWv" id="F7d-pV-rOj"/>
+                        <outlet property="stepsScrollView" destination="oim-xB-nQK" id="3A5-vj-C3o"/>
                         <outletCollection property="optionButtons" destination="cO8-3r-mQt" collectionClass="NSMutableArray" id="mZf-iC-A4j"/>
                         <outletCollection property="optionButtons" destination="6B4-rY-RoG" collectionClass="NSMutableArray" id="vEh-5h-odY"/>
                         <outletCollection property="optionButtons" destination="sak-Io-G4s" collectionClass="NSMutableArray" id="QVv-IG-hBH"/>

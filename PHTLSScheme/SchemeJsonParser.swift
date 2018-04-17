@@ -18,8 +18,6 @@ class SchemeJsonParser {
             if let value = snapshot.value as? [String:Any] {
                 // Parse the PHTLSScheme key from the firebase database
                 self.parser(from: value, inside: 0)
-                print(self.library)
-                print(self.sequence)
                 onCompletion(self.library, self.sequence)
             }
         }

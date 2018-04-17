@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet var optionButtons: [UIButton]!
     //@IBOutlet weak var lastStepLabel: UILabel!
     @IBOutlet weak var stepsLabel: UILabel!
+    @IBOutlet weak var stepsScrollView: UIScrollView!
     lazy var scheme = SchemeLibrary()
     
     override func viewDidLoad() {
@@ -35,6 +36,13 @@ class ViewController: UIViewController {
     }
     
     func nextStepInSchemeLibrary() {
+        if scheme.currentStepString != "" {
+            var textToAdd = "\(stepsLabel.text!) \(scheme.currentStepString)\n"
+            for _ in 0...scheme.currentPlatous {
+                textToAdd += "      "
+            }
+            stepsLabel.text = textToAdd
+        }
         scheme.nextStep()
         if scheme.isFinished {
             performSegue(withIdentifier: "showSuccessViewController", sender: self)
@@ -50,8 +58,6 @@ class ViewController: UIViewController {
             button.titleLabel?.textAlignment = NSTextAlignment.center
             button.setTitle(scheme.currentOptions[index], for: UIControlState.normal)
         }
-//        lastStepLabel.text = "השלב הקודם: \(scheme.lastStepString[scheme.currentPlatous])"
-        stepsLabel.text = "\(stepsLabel.text!) \(scheme.lastStepString[scheme.currentPlatous])\n"
         changeViewByPlatous(platous: scheme.currentPlatous)
     }
     
@@ -64,5 +70,11 @@ class ViewController: UIViewController {
         default:
             self.view.backgroundColor = #colorLiteral(red: 0.6309476495, green: 0.808812499, blue: 0.8660791516, alpha: 1)
         }
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        stepsScrollView.contentOffset = CGPoint(x: stepsScrollView.contentSize.width - stepsScrollView.bounds.width,
+                                                y: stepsScrollView.contentSize.height - stepsScrollView.bounds.height)
     }
 }

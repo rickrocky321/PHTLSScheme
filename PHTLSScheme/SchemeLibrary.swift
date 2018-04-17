@@ -11,7 +11,7 @@ import Foundation
 class SchemeLibrary{
     
     // The PHTLS Scheme seperated into different platous and in each one the steps are arrenged.
-    var library = [
+    private var library = [
         ["S-Saftey", "A-Airway", "B-Breathing", "C-Circulation", "D-Disability", "E-Enviornment"],
         
         ["ביטחון המטפל והמטופל", "התרשמות מזירת האירוע ומנגנון הפציעה", "עצירת דימום פורץ", "דיווח ראשוני",
@@ -33,7 +33,7 @@ class SchemeLibrary{
          "סימטריה, גודל (צרים, רחבים) ותגובה לאור", "תנועות פשוטות בהתאם לפקודה קולית", "קיבוע לקרש גב במקרה הצורך"]
         ]
     // The sequence in which to read from the PHTLS Scheme library
-    var sequence: [(Int, Int)] = [
+    private var sequence: [(Int, Int)] = [
         (0, 1), (1, 2), (2, 3), (1, 2), // S
         (0, 1), (1, 3), (2, 4), (1, 2), (2, 1), // A
         (0, 1), (1, 1), (2, 2), (1, 2), (2, 1), // B
@@ -50,7 +50,8 @@ class SchemeLibrary{
     }
     
     var currentStepString: String { return library[currentPlatous][currentStepInLibrary[currentPlatous]] }
-    private(set) var lastStepString = ["", "", ""]
+    private(set) var lastStepSring = ""
+    private(set) var lastStepStringByPlatous = ["", "", ""]
     private(set) var currentStepInLibrary = [0, 0, 0]
     private var currentStep = 0  // The current step in the specific sequence
     var currentPlatous: Int { return sequence[indexInSequence].0 }
@@ -59,7 +60,8 @@ class SchemeLibrary{
     private(set) var isFinished = false
     
     func nextStep() {
-        lastStepString[currentPlatous] = currentStepString
+        lastStepSring = currentStepString
+        lastStepStringByPlatous[currentPlatous] = currentStepString
         currentStep += 1
         // Either way you should increase the current step in the library at the right platous
         currentStepInLibrary[currentPlatous] += 1
@@ -90,7 +92,6 @@ class SchemeLibrary{
                     randomPosition = randomStepInCurrentPlatous
                 }
                 currentOptions[index] = library[currentPlatous][randomPosition]
-                print(currentOptions)
             }
         }
     }
