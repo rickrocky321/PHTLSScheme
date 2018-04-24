@@ -11,7 +11,7 @@
 		5D4F9992208365DF00028933 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D4F9991208365DF00028933 /* GoogleService-Info.plist */; };
 		5DB91FFA208351D3000858CF /* SchemeJsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB91FF9208351D3000858CF /* SchemeJsonParser.swift */; };
 		E909C3D3206268670082B264 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E909C3D2206268670082B264 /* AppDelegate.swift */; };
-		E909C3D5206268670082B264 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E909C3D4206268670082B264 /* ViewController.swift */; };
+		E909C3D5206268670082B264 /* SchemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E909C3D4206268670082B264 /* SchemeViewController.swift */; };
 		E909C3D8206268670082B264 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E909C3D6206268670082B264 /* Main.storyboard */; };
 		E909C3DA206268670082B264 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E909C3D9206268670082B264 /* Assets.xcassets */; };
 		E909C3DD206268670082B264 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E909C3DB206268670082B264 /* LaunchScreen.storyboard */; };
@@ -26,7 +26,7 @@
 		A7CE28D2617438A36A8AD650 /* Pods-PHTLSScheme.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PHTLSScheme.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PHTLSScheme/Pods-PHTLSScheme.debug.xcconfig"; sourceTree = "<group>"; };
 		E909C3CF206268670082B264 /* PHTLSScheme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PHTLSScheme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E909C3D2206268670082B264 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E909C3D4206268670082B264 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E909C3D4206268670082B264 /* SchemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemeViewController.swift; sourceTree = "<group>"; };
 		E909C3D7206268670082B264 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E909C3D9206268670082B264 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E909C3DC206268670082B264 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -76,7 +76,7 @@
 		E909C3D1206268670082B264 /* PHTLSScheme */ = {
 			isa = PBXGroup;
 			children = (
-				E909C3D4206268670082B264 /* ViewController.swift */,
+				E909C3D4206268670082B264 /* SchemeViewController.swift */,
 				E909C3E620626A760082B264 /* SchemeLibrary.swift */,
 				5DB91FF9208351D3000858CF /* SchemeJsonParser.swift */,
 				E909C3D6206268670082B264 /* Main.storyboard */,
@@ -231,7 +231,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E909C3D5206268670082B264 /* ViewController.swift in Sources */,
+				E909C3D5206268670082B264 /* SchemeViewController.swift in Sources */,
 				5DB91FFA208351D3000858CF /* SchemeJsonParser.swift in Sources */,
 				E909C3E720626A760082B264 /* SchemeLibrary.swift in Sources */,
 				E909C3D3206268670082B264 /* AppDelegate.swift in Sources */,

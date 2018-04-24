@@ -8,18 +8,16 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SchemeViewController: UIViewController {
     
     // View option buttons array
     @IBOutlet var optionButtons: [UIButton]!
-    //@IBOutlet weak var lastStepLabel: UILabel!
     @IBOutlet weak var stepsLabel: UILabel!
     @IBOutlet weak var stepsScrollView: UIScrollView!
     lazy var scheme = SchemeLibrary()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //todo: add function that accepts a json/xml and outputs the correct format to SchemeLibrary
         // Options arn't genretaed when the SchemeLibrary is first accesed
         scheme.generateOptions()
         updateViewFromModel()
@@ -37,14 +35,12 @@ class ViewController: UIViewController {
     
     func nextStepInSchemeLibrary() {
         if scheme.currentStepString != "" {
-            var textToAdd = "\(stepsLabel.text!) \(scheme.currentStepString)\n"
+            var textToAdd = "\(stepsLabel.text!)\n"
             for _ in 0...scheme.currentPlatous {
-                textToAdd += "      "
+                textToAdd += "        "
             }
+            textToAdd += "\(scheme.currentStepString)"
             stepsLabel.text = textToAdd
-            stepsScrollView.contentOffset = CGPoint(x: stepsScrollView.contentSize.width - stepsScrollView.bounds.width,
-                                                    y: stepsScrollView.contentSize.height - stepsScrollView.bounds.height)
-            
         }
         scheme.nextStep()
         if scheme.isFinished {
@@ -61,6 +57,7 @@ class ViewController: UIViewController {
             button.titleLabel?.textAlignment = NSTextAlignment.center
             button.setTitle(scheme.currentOptions[index], for: UIControlState.normal)
         }
+        self.title = scheme.currentFatherPlatousString
         changeViewByPlatous(platous: scheme.currentPlatous)
     }
     
@@ -77,7 +74,7 @@ class ViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-//        stepsScrollView.contentOffset = CGPoint(x: stepsScrollView.contentSize.width - stepsScrollView.bounds.width,
-//                                                y: stepsScrollView.contentSize.height - stepsScrollView.bounds.height)
+        stepsScrollView.contentOffset = CGPoint(x: stepsScrollView.contentSize.width - stepsScrollView.bounds.width,
+                                                y: stepsScrollView.contentSize.height - stepsScrollView.bounds.height)
     }
 }
