@@ -19,6 +19,8 @@ class SchemeJsonParser {
                 // Parse the PHTLSScheme key from the firebase database
                 self.parser(from: value, inside: 0)
                 onCompletion(self.library, self.sequence)
+            } else {
+                print("error reading form database")
             }
         }
     }

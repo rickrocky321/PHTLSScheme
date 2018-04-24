@@ -43,9 +43,10 @@ class SchemeLibrary{
         ]
     
     init() {
-        let _ = SchemeJsonParser { [weak self] (library, sequence) in
-            self?.library = library
-            self?.sequence = sequence
+        let _ = SchemeJsonParser { (library, sequence) in
+            self.library = library
+            self.sequence = sequence
+            print("Scheme Json Parser Complete")
         }
     }
     
@@ -56,7 +57,7 @@ class SchemeLibrary{
     private var currentStep = 0  // The current step in the specific sequence
     var currentPlatous: Int { return sequence[indexInSequence].0 }
     var currentFatherPlatousString: String { return library[0][currentStepInLibrary[0] - 1 == -1 ? 0 : currentStepInLibrary[0] - 1] }
-    var defaultFatherPlatousSrings: [String] { return library[0]}
+    var fatherPlatousSrings: [String] { return library[0]}
     var numOfStepsInCurrentSequence: Int { return sequence[indexInSequence].1 }
     private var indexInSequence = 0
     private(set) var isFinished = false
