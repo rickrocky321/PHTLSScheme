@@ -42,6 +42,9 @@ class ViewController: UIViewController {
                 textToAdd += "      "
             }
             stepsLabel.text = textToAdd
+            stepsScrollView.contentOffset = CGPoint(x: stepsScrollView.contentSize.width - stepsScrollView.bounds.width,
+                                                    y: stepsScrollView.contentSize.height - stepsScrollView.bounds.height)
+            
         }
         scheme.nextStep()
         if scheme.isFinished {
@@ -72,9 +75,9 @@ class ViewController: UIViewController {
         }
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        stepsScrollView.contentOffset = CGPoint(x: stepsScrollView.contentSize.width - stepsScrollView.bounds.width,
-                                                y: stepsScrollView.contentSize.height - stepsScrollView.bounds.height)
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+//        stepsScrollView.contentOffset = CGPoint(x: stepsScrollView.contentSize.width - stepsScrollView.bounds.width,
+//                                                y: stepsScrollView.contentSize.height - stepsScrollView.bounds.height)
     }
 }

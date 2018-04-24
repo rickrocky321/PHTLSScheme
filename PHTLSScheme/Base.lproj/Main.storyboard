@@ -21,10 +21,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2Bp-xl-X4N">
-                                <rect key="frame" x="0.0" y="64" width="375" height="156"/>
+                                <rect key="frame" x="0.0" y="432" width="375" height="200"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="cO8-3r-mQt">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="33"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <state key="normal" title="OptionButton">
                                             <color key="titleColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -34,7 +34,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="6B4-rY-RoG">
-                                        <rect key="frame" x="0.0" y="41" width="375" height="33"/>
+                                        <rect key="frame" x="0.0" y="52" width="375" height="44"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <state key="normal" title="OptionButton">
                                             <color key="titleColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -44,7 +44,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="sak-Io-G4s">
-                                        <rect key="frame" x="0.0" y="82" width="375" height="33"/>
+                                        <rect key="frame" x="0.0" y="104" width="375" height="44"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <state key="normal" title="OptionButton">
                                             <color key="titleColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -54,7 +54,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="gJP-ZT-aZ8">
-                                        <rect key="frame" x="0.0" y="123" width="375" height="33"/>
+                                        <rect key="frame" x="0.0" y="156" width="375" height="44"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <state key="normal" title="OptionButton">
                                             <color key="titleColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -64,12 +64,15 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="H7l-rM-k9P"/>
+                                </constraints>
                             </stackView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oim-xB-nQK">
-                                <rect key="frame" x="0.0" y="220" width="375" height="414"/>
+                            <scrollView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oim-xB-nQK">
+                                <rect key="frame" x="0.0" y="64" width="375" height="368"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Z2-WN-OWv">
-                                        <rect key="frame" x="8" y="8" width="0.0" height="0.0"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Z2-WN-OWv">
+                                        <rect key="frame" x="8" y="8" width="375" height="368"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -83,7 +86,10 @@
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZuO-Rs-s5p">
-                                <rect key="frame" x="0.0" y="634" width="375" height="33"/>
+                                <rect key="frame" x="0.0" y="632" width="375" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="FDf-1h-HY6"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <state key="normal" title="רמאות - עבור לשלב הבא">
                                     <color key="titleColor" red="0.25098040700000002" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -94,16 +100,18 @@
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="ZuO-Rs-s5p" firstAttribute="top" secondItem="oim-xB-nQK" secondAttribute="bottom" id="5Zu-as-Hip"/>
                             <constraint firstItem="oim-xB-nQK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="6SX-yy-nRi"/>
-                            <constraint firstItem="2Bp-xl-X4N" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Qe5-MK-buq"/>
-                            <constraint firstItem="ZuO-Rs-s5p" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="T0e-3F-Fc7"/>
-                            <constraint firstItem="2Bp-xl-X4N" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="V9g-iA-yLk"/>
-                            <constraint firstItem="oim-xB-nQK" firstAttribute="top" secondItem="2Bp-xl-X4N" secondAttribute="bottom" id="coc-nd-L9Y"/>
-                            <constraint firstItem="ZuO-Rs-s5p" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dbG-Vb-jYR"/>
-                            <constraint firstItem="ZuO-Rs-s5p" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="fE5-oe-tU8"/>
-                            <constraint firstItem="2Bp-xl-X4N" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="muo-hf-QaN"/>
+                            <constraint firstItem="ZuO-Rs-s5p" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="7jl-Gg-Jxz"/>
+                            <constraint firstItem="2Bp-xl-X4N" firstAttribute="top" secondItem="oim-xB-nQK" secondAttribute="bottom" id="ETr-Z6-MQg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ZuO-Rs-s5p" secondAttribute="bottom" id="Sag-no-57K"/>
+                            <constraint firstItem="ZuO-Rs-s5p" firstAttribute="top" secondItem="2Bp-xl-X4N" secondAttribute="bottom" id="UfF-TS-ESd"/>
+                            <constraint firstItem="4Z2-WN-OWv" firstAttribute="width" relation="greaterThanOrEqual" secondItem="oim-xB-nQK" secondAttribute="width" id="Z4P-bg-tVb"/>
+                            <constraint firstItem="oim-xB-nQK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="coc-nd-L9Y"/>
+                            <constraint firstItem="4Z2-WN-OWv" firstAttribute="height" relation="greaterThanOrEqual" secondItem="oim-xB-nQK" secondAttribute="height" id="fTX-6e-Ags"/>
+                            <constraint firstItem="ZuO-Rs-s5p" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="qQj-dP-yfF"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2Bp-xl-X4N" secondAttribute="trailing" id="unj-Nw-i16"/>
                             <constraint firstItem="oim-xB-nQK" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="vri-JZ-SFc"/>
+                            <constraint firstItem="2Bp-xl-X4N" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xtu-dp-05a"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -112,9 +120,9 @@
                         <outlet property="stepsLabel" destination="4Z2-WN-OWv" id="F7d-pV-rOj"/>
                         <outlet property="stepsScrollView" destination="oim-xB-nQK" id="3A5-vj-C3o"/>
                         <outletCollection property="optionButtons" destination="cO8-3r-mQt" collectionClass="NSMutableArray" id="mZf-iC-A4j"/>
+                        <outletCollection property="optionButtons" destination="gJP-ZT-aZ8" collectionClass="NSMutableArray" id="iO5-pP-wzp"/>
                         <outletCollection property="optionButtons" destination="6B4-rY-RoG" collectionClass="NSMutableArray" id="vEh-5h-odY"/>
                         <outletCollection property="optionButtons" destination="sak-Io-G4s" collectionClass="NSMutableArray" id="QVv-IG-hBH"/>
-                        <outletCollection property="optionButtons" destination="gJP-ZT-aZ8" collectionClass="NSMutableArray" id="iO5-pP-wzp"/>
                         <segue destination="b9f-Qt-u73" kind="popoverPresentation" identifier="showSuccessViewController" popoverAnchorView="8bC-Xf-vdC" id="sSM-C8-5Cd">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
@@ -122,7 +130,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-159.5" y="100.5"/>
+            <point key="canvasLocation" x="-160.80000000000001" y="100.29985007496252"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="qfp-kG-z3Q">
@@ -173,7 +181,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oQK-ae-Tdh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1174" y="104"/>
+            <point key="canvasLocation" x="-1828" y="104"/>
         </scene>
     </scenes>
     <resources>
