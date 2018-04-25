@@ -10,7 +10,7 @@ import Foundation
 
 class SchemeLibrary{
     
-    // The PHTLS Scheme seperated into different platous and in each one the steps are arrenged.
+    // The PHTLS Scheme seperated into different platous and in each one the steps are arrenged. it is initialised as to have it available offline
     private var library = [
         ["S-Saftey", "A-Airway", "B-Breathing", "C-Circulation", "D-Disability", "E-Enviornment"],
         
@@ -32,7 +32,7 @@ class SchemeLibrary{
          "במידה ויש הידרדרות במצב ההכרה, יש לחזור לשלב ה-A",
          "סימטריה, גודל (צרים, רחבים) ותגובה לאור", "תנועות פשוטות בהתאם לפקודה קולית", "קיבוע לקרש גב במקרה הצורך"]
         ]
-    // The sequence in which to read from the PHTLS Scheme library
+    // The sequence in which to read from the PHTLS Scheme library. it is initialised as to have it available offline
     private var fullSequence: [(Int, Int)] = [
         (0, 1), (1, 2), (2, 3), (1, 2), // S
         (0, 1), (1, 3), (2, 4), (1, 2), (2, 1), // A
@@ -41,29 +41,56 @@ class SchemeLibrary{
         (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (1, 1), (2, 1), // D
         (0, 1), (1, 2), (2, 1), (1, 2) // E
     ]
-    private var sequence: [(Int, Int)]  = [
-        (0, 1), (1, 2), (2, 3), (1, 2), // S
-        (0, 1), (1, 3), (2, 4), (1, 2), (2, 1), // A
-        (0, 1), (1, 1), (2, 2), (1, 2), (2, 1), // B
-        (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (1, 1), (2, 1), (1, 1), (2, 1), (1, 1), // C
-        (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (1, 1), (2, 1), // D
-        (0, 1), (1, 2), (2, 1), (1, 2) // E
-    ]
+    // Takes the full sequence and return only the parts of it specified by the usingSubSequence Bool Array
+    private var sequence: [(Int, Int)] {
+        var sequence: [(Int, Int)] = []
+        for index in subSequences.indices {
+            if usingSubSequence[index] {
+                sequence += subSequences[index]
+            }
+        }
+        return sequence
+    }
     
-    var onDatabaseFetchCompletion: ()->Void = {}
-    
+    // This closer is saved as an instance variable to enable the change of what happens at the fetch completion while the fetch is still happenning
+    var onDatabaseFetchCompletion: ()->Void
     init(onDatabaseFetchCompletion newOnDatabaseFetchCompletion: @escaping ()->Void) {
         onDatabaseFetchCompletion = newOnDatabaseFetchCompletion
+        initiateSubSequences()
+        // Fetch more accurate scheme from database
         let _ = SchemeJsonParser { [weak self] (library, sequence) in
+            // Resets the SchemeLibrary instance when the database fetch is complete
             self?.resetSchemeLibraryFromNewData(newLibrary: library, newSequence: sequence)
             print("Scheme Json Parser Complete")
             self?.onDatabaseFetchCompletion()
         }
     }
     
+    private var subSequences: [[(Int, Int)]] = []
+    var usingSubSequence: [Bool] = []
+    private func initiateSubSequences() {
+        // Initiate the subSequence var to seperate arrays from each father sequence element (sequence[index].0 == 0)
+        subSequences = []
+        var currentSubSequence = -1
+        fullSequence.forEach { (element) in
+            if element.0 == 0 {
+                currentSubSequence += 1
+                subSequences.append([])
+            }
+            subSequences[currentSubSequence].append(element)
+        }
+        // Initiates a Bool Array with the same amount of indicies as the amount of subSequences
+        usingSubSequence = []
+        for _ in subSequences.indices {
+            usingSubSequence.append(true)
+        }
+    }
+    
+    // resets every part of the SchemeLibrary instance. usefull for when the online fetch is complete.
     private func resetSchemeLibraryFromNewData (newLibrary library: [[String]], newSequence sequence: [(Int, Int)]) {
         self.library = library
-        self.sequence = sequence
+        self.fullSequence = sequence
+        self.initiateSubSequences()
         self.lastStepSring = ""
         self.lastStepStringByPlatous = Array(repeating: "", count: library.count)
         self.currentStepInLibrary = Array(repeating: 0, count: library.count)
@@ -78,6 +105,7 @@ class SchemeLibrary{
     private(set) var currentStepInLibrary = [0, 0, 0]
     private var currentStep = 0  // The current step in the specific sequence
     var currentPlatous: Int { return sequence[indexInSequence].0 }
+    // The -1 is to compensate for the next step of a specific platous happening before it is acctualy fetched again
     var currentFatherPlatousString: String { return library[0][currentStepInLibrary[0] - 1 == -1 ? 0 : currentStepInLibrary[0] - 1] }
     var fatherPlatousSrings: [String] { return library[0]}
     var numOfStepsInCurrentSequence: Int { return sequence[indexInSequence].1 }

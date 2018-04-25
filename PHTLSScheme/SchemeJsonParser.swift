@@ -18,7 +18,7 @@ class SchemeJsonParser {
             if let value = snapshot.value as? [String:Any] {
                 // Parse the PHTLSScheme key from the firebase database
                 self.parser(from: value, inside: 0)
-                self.sequence.append((self.currentPlatous, self.amountOfStepsInPlatous))
+                self.sequence.append((self.currentPlatous, self.amountOfStepsInPlatous)) // here to compensate for the lack of adding this by the parse function
                 onCompletion(self.library, self.sequence)
             } else {
                 print("error reading form database")
@@ -55,6 +55,7 @@ class SchemeJsonParser {
             }
             library[platous].append(stepString)
             
+            // If a platous was changed from the last platous then add the amountOfStepsInPlatous to the sequence
             if platous != currentPlatous {
                 sequence.append((currentPlatous, amountOfStepsInPlatous))
                 amountOfStepsInPlatous = 0

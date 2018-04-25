@@ -10,14 +10,12 @@ import UIKit
 
 class SchemeMenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    // Returns the number of father steps in the scheme
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return scheme?.fatherPlatousSrings.count ?? 0
     }
-    
+    // Gives each cell a name from the scheme father steps string based on the cells row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if scheme != nil {
-            print("scheme isn't nil in the \(self.title ?? "(no title for this view controller was found)") while trying to load the TableView cells")
-        }
         let cell = tableView.dequeueReusableCell(withIdentifier: "FatherPlatousStepCell", for: indexPath)
         if let fatherPlatousStepCell = cell as? FatherPlatousStepsTableViewCell {
             fatherPlatousStepCell.fatherPlatousStepLabel.text = scheme?.fatherPlatousSrings[indexPath.row] ?? ""
@@ -35,10 +33,6 @@ class SchemeMenuViewController: UIViewController, UITableViewDelegate, UITableVi
         fatherPlatousStepsTableView.dataSource = self
         scheme = SchemeLibrary { [weak self] in 
             self?.fatherPlatousStepsTableView.reloadData()
-            
-        }
-        if scheme != nil {
-            print("scheme isn't nil in the \(self.title ?? "(no title for this view controller was found)")")
         }
     }
     

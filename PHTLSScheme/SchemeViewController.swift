@@ -18,15 +18,14 @@ class SchemeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if scheme != nil {
-            print("scheme isn't nil in the \(self.title ?? "(no title for this view controller was found)")")
-        }
-        // Options arn't genretaed when the SchemeLibrary is first accesed
+        // Changes what happens if the databse fetch completes to reseting the stepsLabel's text
         scheme?.onDatabaseFetchCompletion = {
+            // Has to thread to the main becouse a UI operation accurs here
             DispatchQueue.main.async {
                 self.stepsLabel.text = ""
             }
         }
+        // Options arn't genretaed when the SchemeLibrary is first accesed
         scheme?.generateOptions()
         updateViewFromModel()
     }
@@ -86,6 +85,7 @@ class SchemeViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        // Have the scroll view look at the right buttom part of the label whenever the label changes
         stepsScrollView.contentOffset = CGPoint(x: stepsScrollView.contentSize.width - stepsScrollView.bounds.width,
                                                 y: stepsScrollView.contentSize.height - stepsScrollView.bounds.height)
     }
