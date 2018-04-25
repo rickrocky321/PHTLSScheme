@@ -11,7 +11,7 @@ import Foundation
 class SchemeLibrary{
     
     // The PHTLS Scheme seperated into different platous and in each one the steps are arrenged. it is initialised as to have it available offline
-    private var library = [
+    private var fullLibrary = [
         ["S-Saftey", "A-Airway", "B-Breathing", "C-Circulation", "D-Disability", "E-Enviornment"],
         
         ["ביטחון המטפל והמטופל", "התרשמות מזירת האירוע ומנגנון הפציעה", "עצירת דימום פורץ", "דיווח ראשוני",
@@ -32,6 +32,28 @@ class SchemeLibrary{
          "במידה ויש הידרדרות במצב ההכרה, יש לחזור לשלב ה-A",
          "סימטריה, גודל (צרים, רחבים) ותגובה לאור", "תנועות פשוטות בהתאם לפקודה קולית", "קיבוע לקרש גב במקרה הצורך"]
         ]
+    private var library: [[String]] {
+        var fullLibrary = self.fullLibrary
+        var library: [[String]] = [[]]
+        for index in subSequences.indices {
+            subSequences[index].forEach { (element) in
+                for _ in 0..<element.1 {
+                    if usingSubSequence[index] {
+                        
+                        while library.count <= element.0 {
+                            library.append([])
+                            print("asd")
+                        }
+                        library[element.0].append(fullLibrary[element.0].removeFirst())
+                    } else {
+                        fullLibrary[element.0].removeFirst()
+                    }
+                }
+            }
+        }
+        
+        return library
+    }
     // The sequence in which to read from the PHTLS Scheme library. it is initialised as to have it available offline
     private var fullSequence: [(Int, Int)] = [
         (0, 1), (1, 2), (2, 3), (1, 2), // S
@@ -80,16 +102,25 @@ class SchemeLibrary{
             subSequences[currentSubSequence].append(element)
         }
         // Initiates a Bool Array with the same amount of indicies as the amount of subSequences
+        let oldUsingSubSequence = usingSubSequence
         usingSubSequence = []
         for _ in subSequences.indices {
             usingSubSequence.append(true)
+        }
+        for index in usingSubSequence.indices {
+            if index < oldUsingSubSequence.count{
+                usingSubSequence[index] = oldUsingSubSequence[index]
+            }
         }
     }
     
     // resets every part of the SchemeLibrary instance. usefull for when the online fetch is complete.
     private func resetSchemeLibraryFromNewData (newLibrary library: [[String]], newSequence sequence: [(Int, Int)]) {
-        self.library = library
+        self.fullLibrary = library
         self.fullSequence = sequence
+        resetSchemeLibrary()
+    }
+    func resetSchemeLibrary() {
         self.initiateSubSequences()
         self.lastStepSring = ""
         self.lastStepStringByPlatous = Array(repeating: "", count: library.count)
@@ -132,7 +163,7 @@ class SchemeLibrary{
     var numOfOptions = 4 // Default is 4
     lazy private(set) var currentCorrectOption = numOfOptions.arc4random
     private(set) var currentOptions = [String]()
-    private var randomStepInCurrentPlatous: Int { return library[currentPlatous].count.arc4random }
+    private var randomStepInCurrentPlatous: Int { return fullLibrary[currentPlatous].count.arc4random }
     
     func generateOptions() {
         currentOptions = Array(repeating: currentStepString, count: numOfOptions)
@@ -141,10 +172,10 @@ class SchemeLibrary{
             if index != currentCorrectOption {
                 // While loop so that it won't add multiplicities, and the currentCorrectOption twice
                 var randomPosition = randomStepInCurrentPlatous
-                while currentOptions.contains(library[currentPlatous][randomPosition]) || randomPosition == currentCorrectOption {
+                while currentOptions.contains(fullLibrary[currentPlatous][randomPosition]) || randomPosition == currentCorrectOption {
                     randomPosition = randomStepInCurrentPlatous
                 }
-                currentOptions[index] = library[currentPlatous][randomPosition]
+                currentOptions[index] = fullLibrary[currentPlatous][randomPosition]
             }
         }
     }

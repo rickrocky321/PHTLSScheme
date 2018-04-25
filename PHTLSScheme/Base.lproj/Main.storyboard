@@ -24,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="573"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FatherPlatousStepCell" id="5lX-Zy-sRu" customClass="FatherPlatousStepsTableViewCell" customModule="PHTLSScheme" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="FatherPlatousStepCell" id="5lX-Zy-sRu" customClass="FatherPlatousStepsTableViewCell" customModule="PHTLSScheme" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5lX-Zy-sRu" id="OyE-cN-ssE">
@@ -36,6 +36,9 @@
                                                     <subviews>
                                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P2q-8i-Tng">
                                                             <rect key="frame" x="0.0" y="6.5" width="51" height="31"/>
+                                                            <connections>
+                                                                <action selector="cellSwitchChanged:" destination="e6U-9R-M40" eventType="valueChanged" id="TFo-2t-sLy"/>
+                                                            </connections>
                                                         </switch>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZm-QY-j6r">
                                                             <rect key="frame" x="57" y="11.5" width="302" height="20.5"/>
@@ -98,6 +101,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SchemQuizBackground" translatesAutoresizingMaskIntoConstraints="NO" id="s41-0C-7Gn">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2Bp-xl-X4N">
                                 <rect key="frame" x="0.0" y="477" width="375" height="160"/>
                                 <subviews>
@@ -179,16 +185,20 @@
                             </button>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="s41-0C-7Gn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5Cq-wd-cvr"/>
                             <constraint firstItem="oim-xB-nQK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="6SX-yy-nRi"/>
+                            <constraint firstItem="s41-0C-7Gn" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="7ak-pl-Qxu"/>
                             <constraint firstItem="ZuO-Rs-s5p" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="7jl-Gg-Jxz"/>
                             <constraint firstItem="2Bp-xl-X4N" firstAttribute="top" secondItem="oim-xB-nQK" secondAttribute="bottom" id="ETr-Z6-MQg"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ZuO-Rs-s5p" secondAttribute="bottom" id="Sag-no-57K"/>
+                            <constraint firstItem="s41-0C-7Gn" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="IHp-Yi-7JP"/>
+                            <constraint firstItem="s41-0C-7Gn" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="RLc-Qw-7uL"/>
+                            <constraint firstItem="ZuO-Rs-s5p" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Sag-no-57K"/>
                             <constraint firstItem="ZuO-Rs-s5p" firstAttribute="top" secondItem="2Bp-xl-X4N" secondAttribute="bottom" id="UfF-TS-ESd"/>
                             <constraint firstItem="4Z2-WN-OWv" firstAttribute="width" relation="greaterThanOrEqual" secondItem="oim-xB-nQK" secondAttribute="width" id="Z4P-bg-tVb"/>
                             <constraint firstItem="oim-xB-nQK" firstAttribute="top" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="top" priority="750" id="coc-nd-L9Y"/>
                             <constraint firstItem="4Z2-WN-OWv" firstAttribute="height" relation="greaterThanOrEqual" secondItem="oim-xB-nQK" secondAttribute="height" id="fTX-6e-Ags"/>
                             <constraint firstItem="ZuO-Rs-s5p" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="qQj-dP-yfF"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2Bp-xl-X4N" secondAttribute="trailing" id="unj-Nw-i16"/>
+                            <constraint firstItem="2Bp-xl-X4N" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="unj-Nw-i16"/>
                             <constraint firstItem="oim-xB-nQK" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="vri-JZ-SFc"/>
                             <constraint firstItem="2Bp-xl-X4N" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xtu-dp-05a"/>
                         </constraints>
@@ -264,6 +274,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="SchemQuizBackground" width="3211" height="5570"/>
         <image name="dickbutt" width="197" height="255"/>
     </resources>
 </document>

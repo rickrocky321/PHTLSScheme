@@ -19,12 +19,16 @@ class SchemeMenuViewController: UIViewController, UITableViewDelegate, UITableVi
         let cell = tableView.dequeueReusableCell(withIdentifier: "FatherPlatousStepCell", for: indexPath)
         if let fatherPlatousStepCell = cell as? FatherPlatousStepsTableViewCell {
             fatherPlatousStepCell.fatherPlatousStepLabel.text = scheme?.fatherPlatousSrings[indexPath.row] ?? ""
+            // Tag the TableViewCellSwitch with the row index
+            fatherPlatousStepCell.fatherPlatousStepSwitch.tag = indexPath.row
         }
         return cell
-    }
-    
+    }    
     @IBOutlet weak var fatherPlatousStepsTableView: UITableView!
     
+    @IBAction func cellSwitchChanged(_ sender: UISwitch) {
+        scheme?.usingSubSequence[sender.tag] = sender.isOn
+    }
     var scheme: SchemeLibrary?
     
     override func viewDidLoad() {
@@ -34,6 +38,7 @@ class SchemeMenuViewController: UIViewController, UITableViewDelegate, UITableVi
         scheme = SchemeLibrary { [weak self] in 
             self?.fatherPlatousStepsTableView.reloadData()
         }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

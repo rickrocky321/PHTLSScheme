@@ -25,6 +25,7 @@ class SchemeViewController: UIViewController {
                 self.stepsLabel.text = ""
             }
         }
+        scheme?.resetSchemeLibrary()
         // Options arn't genretaed when the SchemeLibrary is first accesed
         scheme?.generateOptions()
         updateViewFromModel()
@@ -67,7 +68,7 @@ class SchemeViewController: UIViewController {
             button.setTitle(scheme?.currentOptions[index], for: UIControlState.normal)
         }
         self.title = scheme?.currentFatherPlatousString
-        changeViewByPlatous(platous: scheme?.currentPlatous)
+//        changeViewByPlatous(platous: scheme?.currentPlatous)
     }
     
     func changeViewByPlatous(platous: Int?) {
