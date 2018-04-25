@@ -18,13 +18,17 @@ class SchemeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if scheme != nil {
+            print("scheme isn't nil in the \(self.title ?? "(no title for this view controller was found)")")
+        }
         // Options arn't genretaed when the SchemeLibrary is first accesed
+        scheme?.onDatabaseFetchCompletion = {
+            DispatchQueue.main.async {
+                self.stepsLabel.text = ""
+            }
+        }
         scheme?.generateOptions()
         updateViewFromModel()
-        
-        if scheme == nil {
-            print("scheme is nil")
-        }
     }
     
     @IBAction func optionClicked(_ sender: UIButton) {

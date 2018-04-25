@@ -18,6 +18,7 @@ class SchemeJsonParser {
             if let value = snapshot.value as? [String:Any] {
                 // Parse the PHTLSScheme key from the firebase database
                 self.parser(from: value, inside: 0)
+                self.sequence.append((self.currentPlatous, self.amountOfStepsInPlatous))
                 onCompletion(self.library, self.sequence)
             } else {
                 print("error reading form database")
