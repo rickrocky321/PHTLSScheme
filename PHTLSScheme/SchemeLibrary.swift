@@ -138,7 +138,7 @@ class SchemeLibrary{
     var currentPlatous: Int { return sequence[indexInSequence].0 }
     // The -1 is to compensate for the next step of a specific platous happening before it is acctualy fetched again
     var currentFatherPlatousString: String { return library[0][currentStepInLibrary[0] - 1 == -1 ? 0 : currentStepInLibrary[0] - 1] }
-    var fatherPlatousSrings: [String] { return library[0]}
+    var fatherPlatousSringsOfFullLibrary: [String] { return fullLibrary[0]}
     var numOfStepsInCurrentSequence: Int { return sequence[indexInSequence].1 }
     private var indexInSequence = 0
     private(set) var isFinished = false

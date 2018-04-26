@@ -12,13 +12,13 @@ class SchemeMenuViewController: UIViewController, UITableViewDelegate, UITableVi
     
     // Returns the number of father steps in the scheme
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return scheme?.fatherPlatousSrings.count ?? 0
+        return scheme?.fatherPlatousSringsOfFullLibrary.count ?? 0
     }
     // Gives each cell a name from the scheme father steps string based on the cells row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FatherPlatousStepCell", for: indexPath)
         if let fatherPlatousStepCell = cell as? FatherPlatousStepsTableViewCell {
-            fatherPlatousStepCell.fatherPlatousStepLabel.text = scheme?.fatherPlatousSrings[indexPath.row] ?? ""
+            fatherPlatousStepCell.fatherPlatousStepLabel.text = scheme?.fatherPlatousSringsOfFullLibrary[indexPath.row] ?? ""
             // Tag the TableViewCellSwitch with the row index
             fatherPlatousStepCell.fatherPlatousStepSwitch.tag = indexPath.row
         }
