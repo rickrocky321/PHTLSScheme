@@ -32,28 +32,7 @@ class SchemeLibrary{
          "במידה ויש הידרדרות במצב ההכרה, יש לחזור לשלב ה-A",
          "סימטריה, גודל (צרים, רחבים) ותגובה לאור", "תנועות פשוטות בהתאם לפקודה קולית", "קיבוע לקרש גב במקרה הצורך"]
         ]
-    private var library: [[String]] {
-        var fullLibrary = self.fullLibrary
-        var library: [[String]] = [[]]
-        for index in subSequences.indices {
-            subSequences[index].forEach { (element) in
-                for _ in 0..<element.1 {
-                    if usingSubSequence[index] {
-                        
-                        while library.count <= element.0 {
-                            library.append([])
-                            print("asd")
-                        }
-                        library[element.0].append(fullLibrary[element.0].removeFirst())
-                    } else {
-                        fullLibrary[element.0].removeFirst()
-                    }
-                }
-            }
-        }
-        
-        return library
-    }
+    private var library: [[String]] = [[]]
     // The sequence in which to read from the PHTLS Scheme library. it is initialised as to have it available offline
     private var fullSequence: [(Int, Int)] = [
         (0, 1), (1, 2), (2, 3), (1, 2), // S
@@ -64,15 +43,7 @@ class SchemeLibrary{
         (0, 1), (1, 2), (2, 1), (1, 2) // E
     ]
     // Takes the full sequence and return only the parts of it specified by the usingSubSequence Bool Array
-    private var sequence: [(Int, Int)] {
-        var sequence: [(Int, Int)] = []
-        for index in subSequences.indices {
-            if usingSubSequence[index] {
-                sequence += subSequences[index]
-            }
-        }
-        return sequence
-    }
+    private var sequence: [(Int, Int)] = []
     
     // This closer is saved as an instance variable to enable the change of what happens at the fetch completion while the fetch is still happenning
     var onDatabaseFetchCompletion: ()->Void
@@ -89,7 +60,39 @@ class SchemeLibrary{
     }
     
     private var subSequences: [[(Int, Int)]] = []
-    var usingSubSequence: [Bool] = []
+    var usingSubSequence: [Bool] = [] {
+        didSet {
+            if subSequences.count == usingSubSequence.count {
+                // reset the library according to usingSubSequence
+                var fullLibrary = self.fullLibrary
+                var library: [[String]] = [[]]
+                for index in subSequences.indices {
+                    subSequences[index].forEach { (element) in
+                        for _ in 0..<element.1 {
+                            if usingSubSequence[index] {
+                                
+                                while library.count <= element.0 {
+                                    library.append([])
+                                }
+                                library[element.0].append(fullLibrary[element.0].removeFirst())
+                            } else {
+                                fullLibrary[element.0].removeFirst()
+                            }
+                        }
+                    }
+                }
+                self.library = library
+                // Reset the sequnce according to usingSubSequence
+                var sequence: [(Int, Int)] = []
+                for index in subSequences.indices {
+                    if usingSubSequence[index] {
+                        sequence += subSequences[index]
+                    }
+                }
+                self.sequence = sequence
+            }
+        }
+    }
     private func initiateSubSequences() {
         // Initiate the subSequence var to seperate arrays from each father sequence element (sequence[index].0 == 0)
         subSequences = []
@@ -138,7 +141,7 @@ class SchemeLibrary{
     var currentPlatous: Int { return sequence[indexInSequence].0 }
     // The -1 is to compensate for the next step of a specific platous happening before it is acctualy fetched again
     var currentFatherPlatousString: String { return library[0][currentStepInLibrary[0] - 1 == -1 ? 0 : currentStepInLibrary[0] - 1] }
-    var fatherPlatousSringsOfFullLibrary: [String] { return fullLibrary[0]}
+    var fatherPlatousSringsOfFullLibrary: [String] { return fullLibrary[0] }
     var numOfStepsInCurrentSequence: Int { return sequence[indexInSequence].1 }
     private var indexInSequence = 0
     private(set) var isFinished = false
