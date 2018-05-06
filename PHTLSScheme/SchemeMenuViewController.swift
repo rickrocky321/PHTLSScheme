@@ -28,6 +28,11 @@ class SchemeMenuViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @IBAction func cellSwitchChanged(_ sender: UISwitch) {
         scheme?.usingSubSequence[sender.tag] = sender.isOn
+        let isUsingSubSequenceEmpty = scheme?.usingSubSequence.filter { element -> Bool in return element }.count == 0
+        if isUsingSubSequenceEmpty {
+            sender.isOn = true
+            scheme?.usingSubSequence[sender.tag] = sender.isOn
+        }
     }
     var scheme: SchemeLibrary?
     

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="00v-uG-GEM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="00v-uG-GEM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -183,14 +184,65 @@
                                     <action selector="nextStepButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nAf-7f-JMn"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xm7-ve-bJj" customClass="ScorekeeperBar" customModule="PHTLSScheme" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="375" height="50"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Hourglass" translatesAutoresizingMaskIntoConstraints="NO" id="UMT-sA-v3O">
+                                        <rect key="frame" x="0.0" y="0.0" width="37.5" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="UMT-sA-v3O" secondAttribute="height" multiplier="3:4" id="nFL-p4-gdy"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Venflon" translatesAutoresizingMaskIntoConstraints="NO" id="dlX-ly-Bim">
+                                        <rect key="frame" x="324" y="0.0" width="51" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="dlX-ly-Bim" secondAttribute="height" multiplier="41:40" id="fA0-ND-loB"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="v7v-84-Ynh">
+                                        <rect key="frame" x="37.5" y="0.0" width="286.5" height="50"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vjS-qh-x1k">
+                                                <rect key="frame" x="0.0" y="0.0" width="143.5" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lyk-mx-SOB">
+                                                <rect key="frame" x="143.5" y="0.0" width="143" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.6709628807106599" green="0.21112861122195101" blue="0.19583887510043593" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="1dw-mg-A5f"/>
+                                    <constraint firstItem="dlX-ly-Bim" firstAttribute="leading" secondItem="v7v-84-Ynh" secondAttribute="trailing" id="8Dv-qZ-RvA"/>
+                                    <constraint firstItem="UMT-sA-v3O" firstAttribute="leading" secondItem="Xm7-ve-bJj" secondAttribute="leading" id="F2u-Y3-L0y"/>
+                                    <constraint firstAttribute="bottom" secondItem="v7v-84-Ynh" secondAttribute="bottom" id="Few-m1-HBF"/>
+                                    <constraint firstItem="UMT-sA-v3O" firstAttribute="bottom" secondItem="Xm7-ve-bJj" secondAttribute="bottom" id="WQp-Dc-y9y"/>
+                                    <constraint firstItem="dlX-ly-Bim" firstAttribute="bottom" secondItem="Xm7-ve-bJj" secondAttribute="bottom" id="YK3-gs-kxc"/>
+                                    <constraint firstItem="dlX-ly-Bim" firstAttribute="top" secondItem="Xm7-ve-bJj" secondAttribute="top" id="Z9r-uq-vIt"/>
+                                    <constraint firstItem="v7v-84-Ynh" firstAttribute="leading" secondItem="UMT-sA-v3O" secondAttribute="trailing" id="n0s-iE-czW"/>
+                                    <constraint firstItem="dlX-ly-Bim" firstAttribute="trailing" secondItem="Xm7-ve-bJj" secondAttribute="trailing" id="n93-GX-Gaa"/>
+                                    <constraint firstItem="v7v-84-Ynh" firstAttribute="top" secondItem="Xm7-ve-bJj" secondAttribute="top" id="sye-wm-njF"/>
+                                    <constraint firstItem="UMT-sA-v3O" firstAttribute="top" secondItem="Xm7-ve-bJj" secondAttribute="top" id="wBG-YA-dHb"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <constraints>
                             <constraint firstItem="s41-0C-7Gn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5Cq-wd-cvr"/>
                             <constraint firstItem="oim-xB-nQK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="6SX-yy-nRi"/>
                             <constraint firstItem="s41-0C-7Gn" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="7ak-pl-Qxu"/>
                             <constraint firstItem="ZuO-Rs-s5p" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="7jl-Gg-Jxz"/>
+                            <constraint firstItem="Xm7-ve-bJj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Awb-i8-daw"/>
                             <constraint firstItem="2Bp-xl-X4N" firstAttribute="top" secondItem="oim-xB-nQK" secondAttribute="bottom" id="ETr-Z6-MQg"/>
                             <constraint firstItem="s41-0C-7Gn" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="IHp-Yi-7JP"/>
+                            <constraint firstItem="Xm7-ve-bJj" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Oe0-oT-0YC"/>
+                            <constraint firstItem="Xm7-ve-bJj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Psk-Fj-icc"/>
                             <constraint firstItem="s41-0C-7Gn" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="RLc-Qw-7uL"/>
                             <constraint firstItem="ZuO-Rs-s5p" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Sag-no-57K"/>
                             <constraint firstItem="ZuO-Rs-s5p" firstAttribute="top" secondItem="2Bp-xl-X4N" secondAttribute="bottom" id="UfF-TS-ESd"/>
@@ -274,7 +326,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Hourglass" width="48" height="64"/>
         <image name="SchemQuizBackground" width="3115" height="5564"/>
+        <image name="Venflon" width="104" height="102"/>
         <image name="dickbutt" width="197" height="255"/>
     </resources>
 </document>
