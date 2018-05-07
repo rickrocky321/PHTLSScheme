@@ -16,6 +16,9 @@ class SchemeViewController: UIViewController {
     @IBOutlet weak var stepsScrollView: UIScrollView!
     var scheme: SchemeLibrary?
     
+    @IBOutlet weak var hourglass: UIImageView!
+    @IBOutlet weak var timeInScorekeeperBar: TimeInScorekeeperBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Changes what happens if the databse fetch completes to reseting the stepsLabel's text
@@ -28,7 +31,17 @@ class SchemeViewController: UIViewController {
         scheme?.resetSchemeLibrary()
         // Options arn't genretaed when the SchemeLibrary is first accesed
         scheme?.generateOptions()
-        updateViewFromModel()
+        updateViewFromSchemeModel()
+        
+        animateHourglass()
+    }
+    
+    func animateHourglass () {
+        UIView.transition(with: hourglass,
+                          duration: 1,
+                          options: [.transitionFlipFromBottom, .curveEaseInOut],
+                          animations: {},
+                          completion: { [weak self] finished in self?.animateHourglass() })
     }
     
     @IBAction func optionClicked(_ sender: UIButton) {
@@ -42,6 +55,7 @@ class SchemeViewController: UIViewController {
     }
     
     func nextStepInSchemeLibrary() {
+        print(timeInScorekeeperBar.getTimeElapsedAndResetTimer())
         if let scheme = scheme {
             if scheme.currentStepString != "" {
                 var textToAdd = "\(stepsLabel.text!)\n"
@@ -55,12 +69,12 @@ class SchemeViewController: UIViewController {
             if scheme.isFinished {
                 performSegue(withIdentifier: "showSuccessViewController", sender: self)
             } else {
-                updateViewFromModel()
+                updateViewFromSchemeModel()
             }
         }
     }
     
-    func updateViewFromModel() {
+    func updateViewFromSchemeModel() {
         for index in optionButtons.indices {
             let button = optionButtons[index]
             // Set title to button from library by using game option number
@@ -68,20 +82,6 @@ class SchemeViewController: UIViewController {
             button.setTitle(scheme?.currentOptions[index], for: UIControlState.normal)
         }
         self.title = scheme?.currentFatherPlatousString
-//        changeViewByPlatous(platous: scheme?.currentPlatous)
-    }
-    
-    func changeViewByPlatous(platous: Int?) {
-        if let platous = platous {
-            switch platous {
-            case 0:
-                self.view.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
-            case 1:
-                self.view.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
-            default:
-                self.view.backgroundColor = #colorLiteral(red: 0.6309476495, green: 0.808812499, blue: 0.8660791516, alpha: 1)
-            }
-        }
     }
     
     override func viewDidLayoutSubviews() {
