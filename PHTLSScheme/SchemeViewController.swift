@@ -18,6 +18,7 @@ class SchemeViewController: UIViewController {
     
     @IBOutlet weak var hourglass: UIImageView!
     @IBOutlet weak var timeInScorekeeperBar: TimeInScorekeeperBar!
+    @IBOutlet weak var scoreInScorekeeperBar: ScoreInScorekeeperBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +48,10 @@ class SchemeViewController: UIViewController {
     @IBAction func optionClicked(_ sender: UIButton) {
         if scheme?.currentCorrectOption == optionButtons.index(of: sender) {
             nextStepInSchemeLibrary()
+        } else {
+            // Incorrect option was clicked
+            scoreInScorekeeperBar.penelty()
+            _ = timeInScorekeeperBar.getTimeElapsedAndResetTimer()
         }
     }
     
@@ -55,7 +60,7 @@ class SchemeViewController: UIViewController {
     }
     
     func nextStepInSchemeLibrary() {
-        print(timeInScorekeeperBar.getTimeElapsedAndResetTimer())
+        scoreInScorekeeperBar.addScore(after: timeInScorekeeperBar.getTimeElapsedAndResetTimer())
         if let scheme = scheme {
             if scheme.currentStepString != "" {
                 var textToAdd = "\(stepsLabel.text!)\n"

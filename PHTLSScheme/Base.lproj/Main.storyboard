@@ -218,7 +218,7 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lyk-mx-SOB">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lyk-mx-SOB" customClass="ScoreInScorekeeperBar" customModule="PHTLSScheme" customModuleProvider="target">
                                                 <rect key="frame" x="136" y="0.0" width="135.5" height="50"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -269,6 +269,7 @@
                     <navigationItem key="navigationItem" title="PHTLS Scheme Quiz" id="cWg-hx-loj"/>
                     <connections>
                         <outlet property="hourglass" destination="UMT-sA-v3O" id="HWZ-wR-RPY"/>
+                        <outlet property="scoreInScorekeeperBar" destination="Lyk-mx-SOB" id="2sz-kB-gPU"/>
                         <outlet property="stepsLabel" destination="4Z2-WN-OWv" id="F7d-pV-rOj"/>
                         <outlet property="stepsScrollView" destination="oim-xB-nQK" id="3A5-vj-C3o"/>
                         <outlet property="timeInScorekeeperBar" destination="vjS-qh-x1k" id="ucs-62-Jao"/>
