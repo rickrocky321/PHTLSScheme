@@ -273,6 +273,7 @@
                         <outlet property="stepsLabel" destination="4Z2-WN-OWv" id="F7d-pV-rOj"/>
                         <outlet property="stepsScrollView" destination="oim-xB-nQK" id="3A5-vj-C3o"/>
                         <outlet property="timeInScorekeeperBar" destination="vjS-qh-x1k" id="ucs-62-Jao"/>
+                        <outlet property="venflon" destination="dlX-ly-Bim" id="aTM-ng-SD3"/>
                         <outletCollection property="optionButtons" destination="cO8-3r-mQt" collectionClass="NSMutableArray" id="mZf-iC-A4j"/>
                         <outletCollection property="optionButtons" destination="6B4-rY-RoG" collectionClass="NSMutableArray" id="vEh-5h-odY"/>
                         <outletCollection property="optionButtons" destination="sak-Io-G4s" collectionClass="NSMutableArray" id="QVv-IG-hBH"/>

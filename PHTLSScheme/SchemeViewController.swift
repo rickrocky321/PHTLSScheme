@@ -17,6 +17,7 @@ class SchemeViewController: UIViewController {
     var scheme: SchemeLibrary?
     
     @IBOutlet weak var hourglass: UIImageView!
+    @IBOutlet weak var venflon: UIImageView!
     @IBOutlet weak var timeInScorekeeperBar: TimeInScorekeeperBar!
     @IBOutlet weak var scoreInScorekeeperBar: ScoreInScorekeeperBar!
     
@@ -44,23 +45,29 @@ class SchemeViewController: UIViewController {
                           animations: {},
                           completion: { [weak self] finished in self?.animateHourglass() })
     }
-    
-    @IBAction func optionClicked(_ sender: UIButton) {
-        if scheme?.currentCorrectOption == optionButtons.index(of: sender) {
-            nextStepInSchemeLibrary()
-        } else {
-            // Incorrect option was clicked
-            scoreInScorekeeperBar.penelty()
-            _ = timeInScorekeeperBar.getTimeElapsedAndResetTimer()
+    func animateVenflonAddition(amount: Int) {
+        for _ in 1...amount {
+            
         }
     }
     
-    @IBAction func nextStepButtonClicked(_ sender: UIButton) {
+    @IBAction func optionClicked(_ sender: UIButton) {
+        if scheme?.currentCorrectOption == optionButtons.index(of: sender) {
+            scoreInScorekeeperBar.addScore(after: timeInScorekeeperBar.getTimeElapsedAndResetTimer())
+            nextStepInSchemeLibrary()
+        } else {
+            // Incorrect option was clicked
+            _ = timeInScorekeeperBar.getTimeElapsedAndResetTimer()
+            scoreInScorekeeperBar.penelty()
+        }
+    }
+    
+    @IBAction func nextStepButtonClicked(_ sender: UIButton) { // Temporary function
+        scoreInScorekeeperBar.addScore(after: timeInScorekeeperBar.getTimeElapsedAndResetTimer())
         nextStepInSchemeLibrary()
     }
     
     func nextStepInSchemeLibrary() {
-        scoreInScorekeeperBar.addScore(after: timeInScorekeeperBar.getTimeElapsedAndResetTimer())
         if let scheme = scheme {
             if scheme.currentStepString != "" {
                 var textToAdd = "\(stepsLabel.text!)\n"

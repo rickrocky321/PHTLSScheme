@@ -1,8 +1,8 @@
 //
-//  TimeInScorekeeperBar.swift
+//  LabelsInScorekeeperBar.swift
 //  PHTLSScheme
 //
-//  Created by Roy Levi on 07/05/2018.
+//  Created by Roy Levi on 08/05/2018.
 //  Copyright © 2018 Tilon. All rights reserved.
 //
 
