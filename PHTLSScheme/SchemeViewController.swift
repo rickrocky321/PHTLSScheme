@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SchemeViewController: UIViewController {
+class SchemeViewController: UIViewController, UIDynamicAnimatorDelegate {
     
     // View option buttons array
     @IBOutlet var optionButtons: [UIButton]!
@@ -34,26 +34,66 @@ class SchemeViewController: UIViewController {
         // Options arn't genretaed when the SchemeLibrary is first accesed
         scheme?.generateOptions()
         updateViewFromSchemeModel()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         animateHourglass()
+        venflonAnimator.delegate = self
     }
     
     func animateHourglass () {
+        // the hourglass image will rotate once a second
         UIView.transition(with: hourglass,
                           duration: 1,
                           options: [.transitionFlipFromBottom, .curveEaseInOut],
                           animations: {},
                           completion: { [weak self] finished in self?.animateHourglass() })
     }
-    func animateVenflonAddition(amount: Int) {
-        for _ in 1...amount {
-            
+
+    lazy var venflonAnimator = UIDynamicAnimator(referenceView: view)
+    var venflonImagesForAnimation: [UIImageView] = []
+    var snapToVenflonImage: UISnapBehavior!
+    
+    func animateVenflonAddition(amount: Int, from sender: UIView) {
+        // Translates the senders frame to the right random x and y point from the views refrence
+        let senderFrame = view.convert(sender.frame, from: sender.superview)
+        var randomXPositionFromSenderFrame: CGFloat {
+            return senderFrame.origin.x + CGFloat(Int(senderFrame.width).arc4random)
         }
+        var randomYPositionFromSenderFrame: CGFloat {
+            return senderFrame.origin.y + CGFloat(Int(senderFrame.height).arc4random)
+        }
+        
+        // Takes the amount of venflons images from a given button center and snap animates them the the venflon score image
+        for _ in 0..<amount {
+            let venflonImage = UIImageView(image: venflon.image)
+            // Random  starting place within the button
+            venflonImage.frame = CGRect(x: randomXPositionFromSenderFrame - (venflon.frame.width / 2),
+                                        y: randomYPositionFromSenderFrame - (venflon.frame.height / 2),
+                                        width: venflon.frame.width, height: venflon.frame.height)
+            venflonImage.contentMode = .scaleAspectFit
+            venflonImagesForAnimation.append(venflonImage)
+            view.addSubview(venflonImage)
+            snapToVenflonImage = UISnapBehavior.init(item: venflonImage, snapTo: view.convert(venflon.center, from: venflon.superview))
+            snapToVenflonImage.damping = 1.5
+            venflonAnimator.addBehavior(snapToVenflonImage)
+        }
+    }
+    func dynamicAnimatorDidPause(_ animator: UIDynamicAnimator) {
+        // Remove finished behaviors and the unnecessary venflon images from view and resets the venflonImagesForAnimation array
+        animator.removeAllBehaviors()
+        venflonImagesForAnimation.forEach { venflonImage in
+            venflonImage.removeFromSuperview()
+        }
+        venflonImagesForAnimation = []
     }
     
     @IBAction func optionClicked(_ sender: UIButton) {
         if scheme?.currentCorrectOption == optionButtons.index(of: sender) {
-            scoreInScorekeeperBar.addScore(after: timeInScorekeeperBar.getTimeElapsedAndResetTimer())
+            let scoreAdded = scoreInScorekeeperBar.addScore(after: timeInScorekeeperBar.getTimeElapsedAndResetTimer())
+            animateVenflonAddition(amount: scoreAdded, from: sender)
             nextStepInSchemeLibrary()
         } else {
             // Incorrect option was clicked
@@ -63,8 +103,12 @@ class SchemeViewController: UIViewController {
     }
     
     @IBAction func nextStepButtonClicked(_ sender: UIButton) { // Temporary function
-        scoreInScorekeeperBar.addScore(after: timeInScorekeeperBar.getTimeElapsedAndResetTimer())
+        let scoreAdded = scoreInScorekeeperBar.addScore(after: timeInScorekeeperBar.getTimeElapsedAndResetTimer())
+        animateVenflonAddition(amount: scoreAdded, from: sender)
         nextStepInSchemeLibrary()
+        print(venflonAnimator.isRunning)
+        print(venflonAnimator.behaviors)
+        print(venflonImagesForAnimation)
     }
     
     func nextStepInSchemeLibrary() {
@@ -101,5 +145,11 @@ class SchemeViewController: UIViewController {
         // Have the scroll view look at the right buttom part of the label whenever the label changes
         stepsScrollView.contentOffset = CGPoint(x: stepsScrollView.contentSize.width - stepsScrollView.bounds.width,
                                                 y: stepsScrollView.contentSize.height - stepsScrollView.bounds.height)
+    }
+}
+
+extension CGFloat {
+    var arc4random: CGFloat {
+        return self * (CGFloat(arc4random_uniform(UInt32.max))/CGFloat(UInt32.max))
     }
 }

@@ -57,10 +57,13 @@ class ScoreInScorekeeperBar: UILabel {
         }
     }
     
-    func addScore(after timeElapsed: Double) {
+    func addScore(after timeElapsed: Double) -> Int {
         if maxTimeElapsed > timeElapsed {
-            score += Int((maxTimeElapsed - timeElapsed) / maxTimeElapsed * maxScoreToAdd)
+            let scoreToAdd = Int((maxTimeElapsed - timeElapsed) / maxTimeElapsed * maxScoreToAdd)
+            score += scoreToAdd
+            return scoreToAdd
         }
+        return 0 
     }
     
     func penelty() {
